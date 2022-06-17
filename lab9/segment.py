@@ -1,4 +1,3 @@
-from dot import Dot
 from math import sqrt
 
 
@@ -8,5 +7,5 @@ class LineSegment:
         self.end = end
 
     def length(self) -> float:
-        return sqrt((self.end - self.begin))
+        return sqrt(self.end - self.begin)
 

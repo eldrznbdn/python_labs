@@ -1,8 +1,8 @@
-from circle import Circle
+from lab9.circle import Circle
 from rectangle import Rectangle
 from sphere import Sphere
 from parallelepiped import Parallelepiped
-from dot import Dot
+from lab9.dot import Dot
 from segment import LineSegment
 
 

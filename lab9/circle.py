@@ -7,4 +7,4 @@ class Circle(TwoDimensionalFigure):
         self.radius = radius
 
     def area(self) -> float:
-        return pi * self.radius * 2
+        return pi * self.radius ** 2

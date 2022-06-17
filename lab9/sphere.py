@@ -1,5 +1,6 @@
-from three_space_figures import ThreeDimensionalFigure
+from lab9.three_space_figures import ThreeDimensionalFigure
 from math import pi
+
 
 class Sphere(ThreeDimensionalFigure):
     def __init__(self, radius: int):
