@@ -12,24 +12,78 @@ class Student:
 
 
 class Node:
-    def __init__(self, student: Student):
+    def __init__(self, data: Student):
         self.left = None
         self.right = None
-        self.student = student
+        self.data = data
 
-    def insert_by_rating(self, student: Student):
-        if self.student:
-            if student.rating < self.student.rating:
+    def insert(self, data: Student):
+        if self.data:
+            if data.rating < self.data.rating:
                 if self.left is None:
-                    self.left = Node(student)
+                    self.left = Node(data)
                 else:
-                    self.left.insert_by_rating(student)
-            elif student.rating > self.student.rating:
+                    self.left.insert(data)
+            elif self.data.rating < data.rating:
                 if self.right is None:
-                    self.right = Node(student)
+                    self.right = Node(data)
                 else:
-                    self.right.insert_by_rating(student)
-            else:
-                self.student = student
+                    self.right.insert(data)
+        else:
+            self.data = data
+
+    def print_by_rating(self, rating: int):
+        if self.left:
+            self.left.print()
+        if self.data and self.data.rating > rating:
+            print(self.data)
+        if self.right:
+            self.right.print()
+
+    def remove_by_group(self, group: str):
+        if self.data and self.data.group == group:
+            left = self.left
+            right = self.right
+            if left:
+                self.data = left.data
+                self.left = left.left
+                self.right = left.right
+                if right:
+                    self.insert(right)
+            elif right:
+                self.data = right.data
+                self.right = right.right
+                self.right = right.left
+
+        else:
+            if self.left:
+                self.left.remove_by_group(group)
+            if self.right:
+                self.right.remove_by_group(group)
+
+    def print(self):
+        if self.left:
+            self.left.print()
+        print(self.data)
+        if self.right:
+            self.right.print()
+
+
+def main():
+    first = Student("Petya", "Harry", "IP - 21", 1994, 87)
+    second = Student("Nicolenco", "vasiliy", "KI - 11", 1995, 95)
+    third = Student("Markus", "Valeriy", "IP - 23", 1993, 90)
+
+    root = Node(first)
+    root.insert(second)
+    root.insert(third)
+    root.print()
+    root.print_by_rating(88)
+    root.remove_by_group("KI-11")
+    root.print()
+
+
+if __name__ == "__main__":
+    main()
 
 
